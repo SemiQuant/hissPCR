@@ -1,14 +1,37 @@
 # hissPCR
 
-Analysis of Illumina amplicon sequencing produced using hisPCR (link to protocols.io). The program will trim off the primer sequences (so they do not interfere with variant calling), produce numerous plots of the data, and calls variants. Outputs will be output in the current working directory.
+Analysis primer design and alanysis for hisPCR (link to protocols.io). 
 
-## process.sh
-### Process fastq and create plots/ call variants
->bash process.sh \
+
+## hisPCR_primer_designer.sh
+This program will design primers for a hissPCR reaction.
+| Flag              | Description                                                       |
+|-------------------|-------------------------------------------------------------------|
+|  -n\|--name | name for amplicons (default | hisPCR_nameless) |
+|  -c\|--seq_cycles | Illuina sequecnign cycles (read length; default | 250) |
+|  -h\|--calc_hairpin | should the structure of the inner amplicon be caluclated, require seqfold and take significant time. Alternatively see  |NuPack and DNAmelt.
+|  -start\|--start | start position for region of intrest on template (REQUIRED) |
+|  -end\|--end | end position for region of intrest on template (REQUIRED) |
+|  -t\|--template | template sequence (REQUIRED) |
+|  -o\|--out_dir | path to output directory |
+|  -s\|--Script_dir | path to script directory |
+
+>hisPCR_primer_designer.sh \
+>  --name "rpob_demo" \
+>  --seq_cycles 300 \
+>  --start 100 \
+>  --end 800 \
+>  --template "ttgaccgatgaccccggttcaggcttcaccacagtgtggaacgcggtcgtctccgaacttaacggcgaccctaaggttgacgacggacccagcagtgatgctaatctcagcgctccgctgacccctcagcaaagggcttggctcaatctcgtccagccattgaccatcgtcgaggggtttgctctgttatccgtgccgagcagctttgtccaaaacgaaatcgagcgccatctgcgggccccgattaccgacgctctcagccgccgactcggacatcagatccaactcggggtccgcatcgctccgccggcgaccgacgaagccgacgacactaccgtgccgccttccgaaaatcctgctaccacatcgccagacaccacaaccgacaacgacgagattgatgacagcgctgcggcacggggcgataaccagcacagttggccaagttacttcaccgagcgcccgcacaataccgattccgctaccgctggcgtaaccagccttaaccgtcgctacacctttgatacgttcgttatcggcgcctccaaccggttcgcgcacgccgccgccttggcgatcgcagaagcacccgcccgcgcttacaaccccctgttcatctggggcgagtccggtctcggcaagacacacctgctacacgcggcaggcaactatgcccaacggttgttcccgggaatgcgggtcaaatatgtctccaccgaggaattcaccaacgacttcattaactcgctccgcgatgaccgcaaggtcgcattcaaacgcagctaccgcgacgtagacgtgctgttggtcgacgacatccaattcattgaaggcaaagagggtattcaagaggagttcttccacaccttcaacaccttgcacaatgccaacaagcaaatcgtcatctcatctgaccgcccacccaagcagctcgccaccctcgaggaccggctgagaacccgctttgagtgggggctgatcactgacgtacaaccacccgagctggagacccgcatcgccatcttgcgcaagaaagcacagatggaacggctcgcggtccccgacgatgtcctcgaactcatcgccagcagtatcgaacgcaatatccgtgaactcgagggcgcgctgatccgggtcaccgcgttcgcctcattgaacaaaacaccaatcgacaaagcgctggccgagattgtgcttcgcgatctgatcgccgacgccaacaccatgcaaatcagcgcggcgacgatcatggctgccaccgccgaatacttcgacactaccgtcgaagagcttcgcgggcccggcaagacccgagcactggcccagtcacgacagattgcgatgtacctgtgtcgtgagctcaccgatctttcgttgcccaaaatcggccaagcgttcggccgtgatcacacaaccgtcatgtacgcccaacgcaagatcctgtccgagatggccgagcgccgtgaggtctttgatcacgtcaaagaactcaccactcgcatccgtcagcgctccaagcgctag"
+
+
+## hissPCR.sh
+The program will trim off the primer sequences (so they do not interfere with variant calling), produce numerous plots of the data, and calls variants. Outputs will be output in the current working directory.
+
+>bash hissPCR.sh \
 >  --R1 "test_data/read_R1_001.fastq.gz" \
 >  --R2 "test_data/read_R2_001.fastq.gz" \
 >  --ref "refs/BDQ_duplex.fasta" \
->  --primers "refs/primers.tsv"
+>  --primers "refs/primers.bed"
 
 
 | Flag              | Description                                                       |
@@ -46,7 +69,8 @@ These can be installed on linux systems by running
 - [bcftools >=1.4](http://www.htslib.org/download/)
 - [bwa >= 0.7.17](https://sourceforge.net/projects/bio-bwa/files/)
 - [bedtools](https://bedtools.readthedocs.io/en/latest/content/installation.html)
-
+– [primer3](https://github.com/primer3-org/primer3)
+– [seqfold](https://github.com/Lattice-Automation/seqfold)
 
 R packages
 - vcfR
