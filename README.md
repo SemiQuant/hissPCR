@@ -25,8 +25,10 @@ This program will design primers for a hissPCR reaction.
 
 
 To confirm the harpin formation at the desired anneling temprature, the following toold can be used insted of the `--calc_hairpin` flag, using the input primers and tails 'AATGATACGGCGACCACCGAGATCTACAC[i5 index]GACTGGAGTTCAGACGTGTGCTCTTCCGATCT - gene specific primers and insert - AGATCGGAAGAGCACACGTCTGAACTCCAGTC[i5 index]GTGTAGATCTCGGTGGTCGCCGTATCATT'
-[NuPack](https://www.nupack.org/analysis/input)
-[DINAmelt](http://www.unafold.org/Dinamelt/applications/quickfold.php)
+
+- [NuPack](https://www.nupack.org/analysis/input)
+
+- [DINAmelt](http://www.unafold.org/Dinamelt/applications/quickfold.php)
 
 
 ![HPfig](./HP.svg)
