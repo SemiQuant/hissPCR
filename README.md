@@ -9,7 +9,7 @@ This program will design primers for a hissPCR reaction.
 |-------------------|-------------------------------------------------------------------|
 |  -n\|--name | name for amplicons (default | hisPCR_nameless) |
 |  -c\|--seq_cycles | Illuina sequecnign cycles (read length; default | 250) |
-|  -h\|--calc_hairpin | should the structure of the inner amplicon be caluclated, require seqfold and take significant time. Alternatively see  |NuPack and DNAmelt.
+|  -h\|--calc_hairpin | should the structure of the inner amplicon be caluclated, require seqfold and take significant time. Alternatively see  |NuPack and DINAmelt.
 |  -start\|--start | start position for region of intrest on template (REQUIRED) |
 |  -end\|--end | end position for region of intrest on template (REQUIRED) |
 |  -t\|--template | template sequence (REQUIRED) |
@@ -22,6 +22,14 @@ This program will design primers for a hissPCR reaction.
 >  --start 100 \
 >  --end 800 \
 >  --template "ttgaccgatgaccccggttcaggcttcaccacagtgtggaacgcggtcgtctccgaacttaacggcgaccctaaggttgacgacggacccagcagtgatgctaatctcagcgctccgctgacccctcagcaaagggcttggctcaatctcgtccagccattgaccatcgtcgaggggtttgctctgttatccgtgccgagcagctttgtccaaaacgaaatcgagcgccatctgcgggccccgattaccgacgctctcagccgccgactcggacatcagatccaactcggggtccgcatcgctccgccggcgaccgacgaagccgacgacactaccgtgccgccttccgaaaatcctgctaccacatcgccagacaccacaaccgacaacgacgagattgatgacagcgctgcggcacggggcgataaccagcacagttggccaagttacttcaccgagcgcccgcacaataccgattccgctaccgctggcgtaaccagccttaaccgtcgctacacctttgatacgttcgttatcggcgcctccaaccggttcgcgcacgccgccgccttggcgatcgcagaagcacccgcccgcgcttacaaccccctgttcatctggggcgagtccggtctcggcaagacacacctgctacacgcggcaggcaactatgcccaacggttgttcccgggaatgcgggtcaaatatgtctccaccgaggaattcaccaacgacttcattaactcgctccgcgatgaccgcaaggtcgcattcaaacgcagctaccgcgacgtagacgtgctgttggtcgacgacatccaattcattgaaggcaaagagggtattcaagaggagttcttccacaccttcaacaccttgcacaatgccaacaagcaaatcgtcatctcatctgaccgcccacccaagcagctcgccaccctcgaggaccggctgagaacccgctttgagtgggggctgatcactgacgtacaaccacccgagctggagacccgcatcgccatcttgcgcaagaaagcacagatggaacggctcgcggtccccgacgatgtcctcgaactcatcgccagcagtatcgaacgcaatatccgtgaactcgagggcgcgctgatccgggtcaccgcgttcgcctcattgaacaaaacaccaatcgacaaagcgctggccgagattgtgcttcgcgatctgatcgccgacgccaacaccatgcaaatcagcgcggcgacgatcatggctgccaccgccgaatacttcgacactaccgtcgaagagcttcgcgggcccggcaagacccgagcactggcccagtcacgacagattgcgatgtacctgtgtcgtgagctcaccgatctttcgttgcccaaaatcggccaagcgttcggccgtgatcacacaaccgtcatgtacgcccaacgcaagatcctgtccgagatggccgagcgccgtgaggtctttgatcacgtcaaagaactcaccactcgcatccgtcagcgctccaagcgctag"
+
+
+To confirm the harpin formation at the desired anneling temprature, the following toold can be used insted of the `--calc_hairpin` flag, using the input primers and tails 'AATGATACGGCGACCACCGAGATCTACAC[i5 index]GACTGGAGTTCAGACGTGTGCTCTTCCGATCT - gene specific primers and insert - AGATCGGAAGAGCACACGTCTGAACTCCAGTC[i5 index]GTGTAGATCTCGGTGGTCGCCGTATCATT'
+[NuPack](https://www.nupack.org/analysis/input)
+[DINAmelt](http://www.unafold.org/Dinamelt/applications/quickfold.php)
+
+
+![HPfig](./HP.svg)
 
 
 ## hissPCR.sh

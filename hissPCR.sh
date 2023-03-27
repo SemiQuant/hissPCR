@@ -46,13 +46,15 @@ declare_globals () {
         shift
     done
 }
+
+declare_globals "$@"
 sample=${sample:-${R1/R1*/}}
 threads=${threads:-1}
 primers="$primers" # requires samtools >=1.4
 # Get script dir, posix version
 a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; sdir=$(cd $a; pwd)
 script_path="${script_dir:-$sdir}"
-out_dir="${out_dir:-pwd}"
+out_dir="${out_dir:-$pwd}"
 cd "$out_dir"
 TRIM="${script_path}/Trimmomatic-0.39/trimmomatic-0.39.jar"
 
@@ -66,13 +68,13 @@ if [ ! -f "$TRIM" ]; then echo "$TRIM not found!"; exit 1; fi
 
 
 # bwa index
-if [ ! -z $ref ]
+if [ -z "$ref" ]
 then
   echo "I need a reference fasta."
   exit 1
 fi
 
-if [ ! -e "${ref}.sa" ] #check if indexed alread
+if [ -e "${ref}.sa" ] #check if indexed alread
 then
   bwa index "$ref"
 else
@@ -120,7 +122,7 @@ bedtools genomecov -dz -ibam "$bam" > "${sample}.depth.tsv"
 samtools view -F 4 -f 16 "$bam" | gawk '{ print $3 "\t" $4 "\t" $4 + length($10) "\t-"}' > "${sample}.counts.tsv"
 samtools view -F 4 -f 32 "$bam" | gawk '{ print $3 "\t" $4 "\t" $4 + length($10) "\t+"}' >> "${sample}.counts.tsv"
 
-Rscript "${script_path}/stillPCR_plots.R" "${PWD}/${sample}.counts.tsv" "${PWD}/${sample}.depth.tsv"
+Rscript "${script_path}/stillPCR_plots.R" "${sample}.counts.tsv" "${sample}.depth.tsv"
 
 
 # samtools ampliconstats -@ $threads "$primers" "${sample}_clipped.bam" -o "${sample}_astats.txt"
@@ -142,4 +144,4 @@ bcftools mpileup --fasta-ref "$ref" --max-depth 999999999 \
   --keep-alts > "${sample}.vcf"
 
   
-Rscript "${script_path}/variantAnalysis.R" "${PWD}/${sample}.vcf" "$ref"
+Rscript "${script_path}/variantAnalysis.R" "${sample}.vcf" "$ref"
