@@ -61,6 +61,8 @@ dpth_plt <- read_tsv(args[2], col_names = F) %>%
   plot_ly(x = ~X2, y=~X3, color = ~X1) %>% 
   layout(xaxis = list(title = "Postion"),
          yaxis = list(title = "Depth"),
+         showlegend = T,
+         legend = list(orientation = 'h'),
          title = name)
 try({
   saveWidget(as_widget(dpth_plt), paste0(name, "_cov.html"), selfcontained = T)

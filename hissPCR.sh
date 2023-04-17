@@ -47,8 +47,15 @@ declare_globals () {
     done
 }
 
+if [ $# == 0 ]
+then
+    usage
+    exit 1
+fi
+
+
 declare_globals "$@"
-sample=${sample:-${R1/R1*/}}
+sample=${sample:-${R1/_R1*/}}
 threads=${threads:-1}
 primers="$primers" # requires samtools >=1.4
 # Get script dir, posix version
@@ -71,6 +78,7 @@ if [ ! -f "$TRIM" ]; then echo "$TRIM not found!"; exit 1; fi
 if [ -z "$ref" ]
 then
   echo "I need a reference fasta."
+  usage
   exit 1
 fi
 
@@ -99,7 +107,6 @@ bam="${sample}.bam"
 bwa mem -t $threads "$ref" "$R1" "$R2" > "${sample}.sam"
 samtools view -bS "${sample}.sam" | samtools sort - > "$bam"
 
-
 if [ ! -z "$primers" ]
 then
   samtools ampliconclip --tolerance 8 -u --rejects-file "${sample}_NOclipped.bam" -b "$primers" --hard-clip "$bam" | samtools fixmate -@ $threads -O bam - "${sample}_clipped.tmp.bam"
@@ -110,7 +117,7 @@ else
 fi
 
 samtools index "$bam"
-samtools flagstat "$bam" > "${sample}.flagstat.txt"
+samtools flagstat "$bam" > "${sample}.flagstat.txt" | tee
 # samtools depth -a "${sample}.bam" -o "${sample}.depth.tsv"
 bedtools genomecov -dz -ibam "$bam" > "${sample}.depth.tsv"
 
@@ -128,14 +135,16 @@ Rscript "${script_path}/stillPCR_plots.R" "${sample}.counts.tsv" "${sample}.dept
 # samtools ampliconstats -@ $threads "$primers" "${sample}_clipped.bam" -o "${sample}_astats.txt"
 # plot-ampliconstats -size 1200,900 mydata "${sample}_astats.txt"
 
-bcftools mpileup --fasta-ref "$ref" --max-depth 999999999 \
+bcftools mpileup \
+  --fasta-ref "$ref" \
+  --max-depth 999999999 \
+  --max-idepth 999999999 \
   --ignore-RG \
   --min-BQ 30 \
   --threads $threads \
-  --excl-flags "UNMAP,SECONDARY,QCFAIL" \
-  --max-idepth 9999999999 \
+  --annotate "AD,ADF,ADR" \
   -Ou \
-  --annotate FORMAT/AD,FORMAT/ADF,FORMAT/ADR \
+  --skip-any-set UNMAP,SECONDARY,QCFAIL \
   "$bam" |
   bcftools call -m --keep-masked-ref --threads $threads \
   --novel-rate 1e-100 \
@@ -143,5 +152,5 @@ bcftools mpileup --fasta-ref "$ref" --max-depth 999999999 \
   --prior 0 \
   --keep-alts > "${sample}.vcf"
 
-  
+
 Rscript "${script_path}/variantAnalysis.R" "${sample}.vcf" "$ref"
