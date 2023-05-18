@@ -1,7 +1,9 @@
 # hissPCR
 
-Analysis primer design and alanysis for hissPCR (link to protocols.io). 
-
+<div>
+    <img src="https://github.com/SemiQuant/hissPCR/assets/8179171/f78c0b26-be48-4148-b75d-8be0e2481969" width="30%" height="30%">
+    <p>Analysis primer design and alanysis for hissPCR (link to protocols.io)</p>
+</div>
 
 ## hisPCR_primer_designer.sh
 This program will design primers for a hissPCR reaction.
