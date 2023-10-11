@@ -19,6 +19,7 @@ This program will design primers for a hissPCR reaction.
 |  -s\|--Script_dir | path to script directory |
 
 >hissPCR_primer_designer.sh \\
+
 >  --name "rpob_demo" \\
 >  --seq_cycles 300 \\
 >  --start 100 \\
