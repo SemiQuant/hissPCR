@@ -18,14 +18,14 @@ This program will design primers for a hissPCR reaction.
 |  -o\|--out_dir | path to output directory |
 |  -s\|--Script_dir | path to script directory |
 
->hissPCR_primer_designer.sh \\
-
->  --name "rpob_demo" \\
->  --seq_cycles 300 \\
->  --start 100 \\
->  --end 800 \\
->  --template "ttgaccgatgaccccggttcaggcttcaccacagtgtggaacgcggtcgtctccgaacttaacggcgaccctaaggttgacgacggacccagcagtgatgctaatctcagcgctccgctgacccctcagcaaagggcttggctcaatctcgtccagccattgaccatcgtcgaggggtttgctctgttatccgtgccgagcagctttgtccaaaacgaaatcgagcgccatctgcgggccccgattaccgacgctctcagccgccgactcggacatcagatccaactcggggtccgcatcgctccgccggcgaccgacgaagccgacgacactaccgtgccgccttccgaaaatcctgctaccacatcgccagacaccacaaccgacaacgacgagattgatgacagcgctgcggcacggggcgataaccagcacagttggccaagttacttcaccgagcgcccgcacaataccgattccgctaccgctggcgtaaccagccttaaccgtcgctacacctttgatacgttcgttatcggcgcctccaaccggttcgcgcacgccgccgccttggcgatcgcagaagcacccgcccgcgcttacaaccccctgttcatctggggcgagtccggtctcggcaagacacacctgctacacgcggcaggcaactatgcccaacggttgttcccgggaatgcgggtcaaatatgtctccaccgaggaattcaccaacgacttcattaactcgctccgcgatgaccgcaaggtcgcattcaaacgcagctaccgcgacgtagacgtgctgttggtcgacgacatccaattcattgaaggcaaagagggtattcaagaggagttcttccacaccttcaacaccttgcacaatgccaacaagcaaatcgtcatctcatctgaccgcccacccaagcagctcgccaccctcgaggaccggctgagaacccgctttgagtgggggctgatcactgacgtacaaccacccgagctggagacccgcatcgccatcttgcgcaagaaagcacagatggaacggctcgcggtccccgacgatgtcctcgaactcatcgccagcagtatcgaacgcaatatccgtgaactcgagggcgcgctgatccgggtcaccgcgttcgcctcattgaacaaaacaccaatcgacaaagcgctggccgagattgtgcttcgcgatctgatcgccgacgccaacaccatgcaaatcagcgcggcgacgatcatggctgccaccgccgaatacttcgacactaccgtcgaagagcttcgcgggcccggcaagacccgagcactggcccagtcacgacagattgcgatgtacctgtgtcgtgagctcaccgatctttcgttgcccaaaatcggccaagcgttcggccgtgatcacacaaccgtcatgtacgcccaacgcaagatcctgtccgagatggccgagcgccgtgaggtctttgatcacgtcaaagaactcaccactcgcatccgtcagcgctccaagcgctag"
-
+```
+hissPCR_primer_designer.sh \
+  --name "rpob_demo" \
+  --seq_cycles 300 \
+  --start 100 \
+  --end 800 \
+  --template "ttgaccgatgaccccggttcaggcttcaccacagtgtggaacgcggtcgtctccgaacttaacggcgaccctaaggttgacgacggacccagcagtgatgctaatctcagcgctccgctgacccctcagcaaagggcttggctcaatctcgtccagccattgaccatcgtcgaggggtttgctctgttatccgtgccgagcagctttgtccaaaacgaaatcgagcgccatctgcgggccccgattaccgacgctctcagccgccgactcggacatcagatccaactcggggtccgcatcgctccgccggcgaccgacgaagccgacgacactaccgtgccgccttccgaaaatcctgctaccacatcgccagacaccacaaccgacaacgacgagattgatgacagcgctgcggcacggggcgataaccagcacagttggccaagttacttcaccgagcgcccgcacaataccgattccgctaccgctggcgtaaccagccttaaccgtcgctacacctttgatacgttcgttatcggcgcctccaaccggttcgcgcacgccgccgccttggcgatcgcagaagcacccgcccgcgcttacaaccccctgttcatctggggcgagtccggtctcggcaagacacacctgctacacgcggcaggcaactatgcccaacggttgttcccgggaatgcgggtcaaatatgtctccaccgaggaattcaccaacgacttcattaactcgctccgcgatgaccgcaaggtcgcattcaaacgcagctaccgcgacgtagacgtgctgttggtcgacgacatccaattcattgaaggcaaagagggtattcaagaggagttcttccacaccttcaacaccttgcacaatgccaacaagcaaatcgtcatctcatctgaccgcccacccaagcagctcgccaccctcgaggaccggctgagaacccgctttgagtgggggctgatcactgacgtacaaccacccgagctggagacccgcatcgccatcttgcgcaagaaagcacagatggaacggctcgcggtccccgacgatgtcctcgaactcatcgccagcagtatcgaacgcaatatccgtgaactcgagggcgcgctgatccgggtcaccgcgttcgcctcattgaacaaaacaccaatcgacaaagcgctggccgagattgtgcttcgcgatctgatcgccgacgccaacaccatgcaaatcagcgcggcgacgatcatggctgccaccgccgaatacttcgacactaccgtcgaagagcttcgcgggcccggcaagacccgagcactggcccagtcacgacagattgcgatgtacctgtgtcgtgagctcaccgatctttcgttgcccaaaatcggccaagcgttcggccgtgatcacacaaccgtcatgtacgcccaacgcaagatcctgtccgagatggccgagcgccgtgaggtctttgatcacgtcaaagaactcaccactcgcatccgtcagcgctccaagcgctag"
+```
 
 To confirm the harpin formation at the desired anneling temprature, the following tools can be used insted of the `--calc_hairpin` flag, using the input primers and tails 'AATGATACGGCGACCACCGAGATCTACAC[i5 index]GACTGGAGTTCAGACGTGTGCTCTTCCGATCT - gene specific primers and insert - AGATCGGAAGAGCACACGTCTGAACTCCAGTC[i5 index]GTGTAGATCTCGGTGGTCGCCGTATCATT'
 
@@ -38,11 +38,13 @@ To confirm the harpin formation at the desired anneling temprature, the followin
 ## hissPCR.sh
 The program will trim off the primer sequences (so they do not interfere with variant calling), produce numerous plots of the data, and calls variants. Outputs will be output in the current working directory.
 
->bash hissPCR.sh \\
->  --R1 "test_data/read_R1_001.fastq.gz" \\
->  --R2 "test_data/read_R2_001.fastq.gz" \\
->  --ref "refs/BDQ_duplex.fasta" \\
->  --primers "refs/primers.bed"
+```
+bash hissPCR.sh \
+  --R1 "test_data/read_R1_001.fastq.gz" \
+  --R2 "test_data/read_R2_001.fastq.gz" \
+  --ref "refs/BDQ_duplex.fasta" \
+  --primers "refs/primers.bed"
+```
 
 
 | Flag              | Description                                                       |
