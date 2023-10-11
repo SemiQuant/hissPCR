@@ -2,7 +2,7 @@
 
 <div>
     <img src="https://github.com/SemiQuant/hissPCR/assets/8179171/f78c0b26-be48-4148-b75d-8be0e2481969" width="30%" height="30%">
-    <p>Analysis primer design and alanysis for hissPCR (link to protocols.io)</p>
+    <p>[Analysis primer design and analysis for hissPCR ](https://www.protocols.io/view/hisspcr-a-simple-single-tube-overlapping-amplicon-q26g7yw79gwz/v1)</p>
 </div>
 
 ## hisPCR_primer_designer.sh
@@ -18,11 +18,11 @@ This program will design primers for a hissPCR reaction.
 |  -o\|--out_dir | path to output directory |
 |  -s\|--Script_dir | path to script directory |
 
->hissPCR_primer_designer.sh \
->  --name "rpob_demo" \
->  --seq_cycles 300 \
->  --start 100 \
->  --end 800 \
+>hissPCR_primer_designer.sh \\
+>  --name "rpob_demo" \\
+>  --seq_cycles 300 \\
+>  --start 100 \\
+>  --end 800 \\
 >  --template "ttgaccgatgaccccggttcaggcttcaccacagtgtggaacgcggtcgtctccgaacttaacggcgaccctaaggttgacgacggacccagcagtgatgctaatctcagcgctccgctgacccctcagcaaagggcttggctcaatctcgtccagccattgaccatcgtcgaggggtttgctctgttatccgtgccgagcagctttgtccaaaacgaaatcgagcgccatctgcgggccccgattaccgacgctctcagccgccgactcggacatcagatccaactcggggtccgcatcgctccgccggcgaccgacgaagccgacgacactaccgtgccgccttccgaaaatcctgctaccacatcgccagacaccacaaccgacaacgacgagattgatgacagcgctgcggcacggggcgataaccagcacagttggccaagttacttcaccgagcgcccgcacaataccgattccgctaccgctggcgtaaccagccttaaccgtcgctacacctttgatacgttcgttatcggcgcctccaaccggttcgcgcacgccgccgccttggcgatcgcagaagcacccgcccgcgcttacaaccccctgttcatctggggcgagtccggtctcggcaagacacacctgctacacgcggcaggcaactatgcccaacggttgttcccgggaatgcgggtcaaatatgtctccaccgaggaattcaccaacgacttcattaactcgctccgcgatgaccgcaaggtcgcattcaaacgcagctaccgcgacgtagacgtgctgttggtcgacgacatccaattcattgaaggcaaagagggtattcaagaggagttcttccacaccttcaacaccttgcacaatgccaacaagcaaatcgtcatctcatctgaccgcccacccaagcagctcgccaccctcgaggaccggctgagaacccgctttgagtgggggctgatcactgacgtacaaccacccgagctggagacccgcatcgccatcttgcgcaagaaagcacagatggaacggctcgcggtccccgacgatgtcctcgaactcatcgccagcagtatcgaacgcaatatccgtgaactcgagggcgcgctgatccgggtcaccgcgttcgcctcattgaacaaaacaccaatcgacaaagcgctggccgagattgtgcttcgcgatctgatcgccgacgccaacaccatgcaaatcagcgcggcgacgatcatggctgccaccgccgaatacttcgacactaccgtcgaagagcttcgcgggcccggcaagacccgagcactggcccagtcacgacagattgcgatgtacctgtgtcgtgagctcaccgatctttcgttgcccaaaatcggccaagcgttcggccgtgatcacacaaccgtcatgtacgcccaacgcaagatcctgtccgagatggccgagcgccgtgaggtctttgatcacgtcaaagaactcaccactcgcatccgtcagcgctccaagcgctag"
 
 
@@ -37,10 +37,10 @@ To confirm the harpin formation at the desired anneling temprature, the followin
 ## hissPCR.sh
 The program will trim off the primer sequences (so they do not interfere with variant calling), produce numerous plots of the data, and calls variants. Outputs will be output in the current working directory.
 
->bash hissPCR.sh \
->  --R1 "test_data/read_R1_001.fastq.gz" \
->  --R2 "test_data/read_R2_001.fastq.gz" \
->  --ref "refs/BDQ_duplex.fasta" \
+>bash hissPCR.sh \\
+>  --R1 "test_data/read_R1_001.fastq.gz" \\
+>  --R2 "test_data/read_R2_001.fastq.gz" \\
+>  --ref "refs/BDQ_duplex.fasta" \\
 >  --primers "refs/primers.bed"
 
 
